@@ -9,6 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cli-table": "^0.3.11",
+    "commander": "^10.0.0",
     "zx": "^7.1.1"
   }
 }
