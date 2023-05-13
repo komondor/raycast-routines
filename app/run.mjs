@@ -18,11 +18,13 @@ const run = program.name("run");
 run.command("bookmarks").description("open chrome bookamrks manager");
 run.command("devices").description("list of all devices on network");
 run.command("sampling").description("sampling");
+run.command("repo").description("convert github repo to pdf");
 
 try {
   program.parse(["--help"], { from: "user" });
   process.exit();
 } catch (err) {
+  const { message } = err;
   if (!message.includes("outputHelp")) {
     console.error("something went wrong");
   }

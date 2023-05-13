@@ -4,11 +4,11 @@
 // @raycast.schemaVersion 1
 // @raycast.title sampling
 // @raycast.mode fullOutput
+// @raycast.argument1 { "type": "text", "placeholder": "youtube url" }
 
 // Optional parameters:
 // @raycast.icon 🤖
 // @raycast.packageName Web Searches
-// @raycast.argument1 { "type": "text", "placeholder": "youtube url" }
 
 import { $ as $zx, cd } from "zx";
 
