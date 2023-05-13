@@ -4,9 +4,11 @@ A collection of miscellanous raycast scripts
 
 ## Utilies
 
-- [repo](#repo) : github repo to pdf
-- [sampling](#sampling) : youtube to wav
-- [devices](#devices) : list network devices
+| Name                  | Description          |
+| --------------------- | -------------------- |
+| [repo](#repo)         | github repo to pdf   |
+| [sampling](#sampling) | youtube to wav       |
+| [devices](#devices)   | list network devices |
 
 ## Environment variables
 
