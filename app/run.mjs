@@ -15,10 +15,9 @@ const program = new Command();
 program.exitOverride();
 const run = program.name("run");
 
-run.command("bookmarks").description("open chrome bookamrks manager");
 run.command("devices").description("list of all devices on network");
 run.command("sampling").description("sampling");
-run.command("repo").description("convert github repo to pdf");
+run.command("repo").description("conve");
 
 try {
   program.parse(["--help"], { from: "user" });

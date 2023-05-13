@@ -1,27 +1,30 @@
-# raycast routine
+# Raycast routine
 
-a collection of miscellanous raycast scripts
+A collection of miscellanous raycast scripts
 
-## scripts
+## Utilies
 
-### bookmarks
+- [repo](#repo) : github repo to pdf
+- [sampling](#sampling) : youtube to wav
+- [devices](#devices) : list network devices
 
-- action: open a chrome bookmark manager
-- arguments: none
-- environment variables: none
+## Environment variables
 
-### devices
+## repo
 
-- action: list all connected devices on the network
-- arguments: none
-- environment variables: none
+| Name               | Description                        | Default            | Required |
+| ------------------ | ---------------------------------- | ------------------ | -------- |
+| `ROUTINE_REPO_DIR` | The directory to output the pdf to | `${HOME}/Download` | Optional |
 
-### sampling
+## sampling
 
-- action: youtube video to wav (in Downloads folder)
-- arguments: youtube video url
-- environment variables:
-- "RUN_SAMPLING_DIR" : directory to save the wav file
+| Name                   | Description                      | Default            | Required |
+| ---------------------- | -------------------------------- | ------------------ | -------- |
+| `ROUTINE_SAMPLING_DIR` | The directoy to output to wav to | `${HOME}/Download` | Optional |
+
+## devices
+
+no environment variables to set
 
 ## third-party Tools
 
