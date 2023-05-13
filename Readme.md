@@ -2,13 +2,11 @@
 
 A collection of miscellanous raycast scripts
 
-## Utilies
+## Utilities
 
-| Name                  | Description          |
-| --------------------- | -------------------- |
-| [repo](#repo)         | github repo to pdf   |
-| [sampling](#sampling) | youtube to wav       |
-| [devices](#devices)   | list network devices |
+[repo](#repo) github repo to pdf  
+[sampling](#sampling) youtube to wav  
+[devices](#devices) list network devices
 
 ## Environment variables
 
