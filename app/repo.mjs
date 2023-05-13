@@ -23,7 +23,7 @@ try {
 
   const scriptPath = path.join(
     new URL(".", import.meta.url).pathname,
-    "../tools/gpt-repository-loader/gpt_repository_loader.py"
+    "../tools/github-to-pdf/gpt_repository_loader.py"
   );
   const github_url = process.argv[2];
 
