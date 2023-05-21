@@ -5,16 +5,23 @@
 // @raycast.title repo
 // @raycast.mode fullOutput
 // @raycast.argument1 { "type": "text", "placeholder": "github url" }
+// @raycast.argument2 { "type": "text", "placeholder": "pdf_or_text" }
 
 // Optional parameters:
 // @raycast.icon 🤖
 // @raycast.packageName Web Searches
 
-import { $ as $zx, cd } from "zx";
+import { $, $ as $zx, cd } from "zx";
 import path from "path";
 import PDFDocument from "pdfkit";
 import { readFile } from "fs/promises";
 import { createWriteStream } from "fs";
+import cliSpinners from "cli-spinners";
+import readline from "readline";
+import logUpdate from "log-update";
+import { log } from "console";
+
+// You might need to use a package like `readline` to handle cursor movement and clearing lines in the terminal.
 
 try {
   $zx.verbose = false;
@@ -25,56 +32,88 @@ try {
     new URL(".", import.meta.url).pathname,
     "../tools/github-to-pdf/gpt_repository_loader.py"
   );
-  const github_url = process.argv[2];
+  const location = process.argv[2];
+  const pdf_or_text = process.argv[3];
 
-  cd(`/tmp`);
+  let folderPath = "";
+  let folder_name = "";
 
-  const folder_name = github_url.split("/").pop().split(".");
+  // verify if location starts with https://github.com
 
-  await $zx`rm -rf ${folder_name}`;
+  if (location.includes("https://github.com") === true) {
+    cd(`/tmp`);
 
-  const gloneOuput = await $zx`git clone ${github_url}`;
+    folder_name = location.split("/").pop().split(".");
 
-  await delayMessanger(1200, "repo cloned");
+    await $zx`rm -rf ${folder_name}`;
 
-  // remove package-lock.json
+    const gloneOuput = await $zx`git clone ${location}`;
 
-  await $zx`rm ${folder_name}/package-lock.json`;
+    await delayMessanger(1200, "repo cloned");
 
-  // extrat the folder name from the url
+    // remove package-lock.json if exists
 
-  const outputConverter =
-    await $zx`python3 ${scriptPath} /tmp/${folder_name} -o /tmp/${folder_name}.txt`;
+    await $zx`rm -rf ${folder_name}/package-lock.json`;
+    await $zx`rm -rf ${folder_name}/yarn.lock`;
 
-  if (`${outputConverter}`.includes(`${folder_name}.txt`)) {
-    await delayMessanger(1200, "repo converted to txt");
+    folderPath = `/tmp/${folder_name}`;
+    // remove node_modules if exists
+
+    await $zx`python3 ${scriptPath} ${folderPath} -o /tmp/${folder_name}.raw.txt`;
+
+    await delayMessanger(1200, "data extracted");
+
+    await $zx`grep \\\\0 /tmp/${folder_name}.raw.txt > /tmp/${folder_name}.txt`;
+
+    await delayMessanger(1200, "data cleaned");
+  } else {
+    folderPath = `${process.env.HOME}/Downloads/${location}`;
+    folder_name = location;
+
+    await delayMessanger(1200, "data extracted");
+
+    await $zx`python3 ${scriptPath} ${folderPath} -o /tmp/${folder_name}.txt`;
   }
 
-  // https://github.com/homanp/langchain-ui
+  if (pdf_or_text === "text") {
+    // mv the file to downloads
 
-  const doc = new PDFDocument();
+    await $zx`mv /tmp/${folder_name}.txt ${process.env.HOME}/Downloads/`;
 
-  // Pipe its output to a file
+    await delayMessanger(
+      1200,
+      `txt saved to ${process.env.HOME}/Downloads/${folder_name}.txt`
+    );
+  }
 
-  await delayMessanger(1200, "pdf convesion initiated");
+  if (pdf_or_text === "pdf") {
+    const doc = new PDFDocument();
 
-  doc.pipe(
-    createWriteStream(`${process.env.HOME}/Downloads/${folder_name}.pdf`)
-  );
+    // Pipe its output to a file
 
-  // Read text from the text file
-  const data = await readFile(`/tmp/${folder_name}.txt`, "utf8");
+    await delayMessanger(1200, "pdf convesion initiated");
 
-  // Add the text to the PDF
+    doc.pipe(
+      createWriteStream(`${process.env.HOME}/Downloads/${folder_name}.pdf`)
+    );
 
-  doc.text(data);
+    // Read text from the text file
+    const data = await readFile(`/tmp/${folder_name}.txt`, "utf8");
 
-  // Finalize the PDF file
-  doc.end();
+    // Add the text to the PDF
 
-  await delayMessanger(1200, "pdf convesion finished");
+    doc.text(data);
 
-  await delayMessanger(1200, `pdf saved to ${process.env.HOME}/Downloads/`);
+    // Finalize the PDF file
+    doc.end();
+
+    await delayMessanger(1200, "pdf convesion finished");
+
+    await $zx`rm -rf /tmp/${folder_name}.txt`;
+    await $zx`rm -rf /tmp/${folder_name}.raw.txt`;
+
+    await delayMessanger(1200, `pdf saved to ${process.env.HOME}/Downloads/`);
+  }
 } catch (err) {
   console.log(err);
 }

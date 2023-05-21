@@ -6,8 +6,6 @@ A collection of miscellanous raycast scripts:
 [sampling](#sampling) youtube to wav  
 [devices](#devices) list network devices
 
-## Environment variables
-
 ## repo
 
 | Name               | Description                        | Default            | Required |
@@ -27,5 +25,3 @@ no environment variables to set
 ## third-party Tools
 
 This project uses some third-party tools. Here are the references:
-
-- [GPT Repository Loader](https://github.com/mpoon/gpt-repository-loader)
