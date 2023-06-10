@@ -16,8 +16,8 @@ program.exitOverride();
 const run = program.name("run");
 
 run.command("devices").description("list of all devices on network");
-run.command("sampling").description("sampling");
-run.command("repo").description("conve");
+run.command("sampling").description("export youtube to wav");
+run.command("repo").description("convert a github repo to a text file");
 
 try {
   program.parse(["--help"], { from: "user" });

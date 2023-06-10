@@ -16,12 +16,6 @@ import path from "path";
 import PDFDocument from "pdfkit";
 import { readFile } from "fs/promises";
 import { createWriteStream } from "fs";
-import cliSpinners from "cli-spinners";
-import readline from "readline";
-import logUpdate from "log-update";
-import { log } from "console";
-
-// You might need to use a package like `readline` to handle cursor movement and clearing lines in the terminal.
 
 try {
   $zx.verbose = false;

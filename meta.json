@@ -1,6 +1,6 @@
 {
+  "id": "zkiA_QSyClhj",
   "name": "routines",
   "type": "app",
-  "scope": "raycast",
-  "id": "zkiA_QSyClhj"
+  "scope": "global"
 }

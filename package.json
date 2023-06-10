@@ -12,7 +12,7 @@
     "cli-spinners": "^2.9.0",
     "cli-table": "^0.3.11",
     "commander": "^10.0.0",
-    "log-update": "^5.0.1",
+    "dotenv": "^16.0.3",
     "pdfkit": "^0.13.0",
     "zx": "^7.1.1"
   }
