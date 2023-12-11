@@ -37,8 +37,9 @@ const response = await notion.databases.query({
 if (response.results.length === 0) {
   console.log("No results found");
   process.exit();
-} else if (process.results > 1) {
+} else if (response.results.length > 1) {
   console.log("More than one result found");
+  console.log("This command only supports one result");
   process.exit();
 } else {
   const url = response.results[0].properties.Url.url;
