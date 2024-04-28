@@ -17,8 +17,10 @@ const run = program.name("run");
 
 run.command("devices").description("list of all devices on network");
 run.command("sampling").description("export youtube to wav");
-run.command("repo").description("convert a github repo to a text");
-run.command("find").description("find a tag in a notion database");
+run.command("uuid").description("generate a uuid");
+run
+  .command("env")
+  .description("list of all environment variables in .zprofile");
 
 try {
   program.parse(["--help"], { from: "user" });
