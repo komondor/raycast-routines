@@ -10,6 +10,8 @@
 
 import { $ } from "zx";
 
+$.shell = "zsh";
+
 $.verbose = true;
 
 await $`cursor ~/projects`;
