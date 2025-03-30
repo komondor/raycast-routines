@@ -2,7 +2,7 @@
 
 // Required parameters:
 // @raycast.schemaVersion 1
-// @raycast.title project
+// @raycast.title projects
 // @raycast.mode compact
 
 // Optional parameters:
