@@ -15,9 +15,9 @@ const program = new Command();
 program.exitOverride();
 const run = program.name("run");
 
-run.command("devices").description("list of all devices on network");
 run.command("sampling").description("export youtube to wav");
 run.command("uuid").description("generate a uuid");
+run.command("projects").description("open projects directory in cursor");
 run
   .command("env")
   .description("list of all environment variables in .zprofile");
