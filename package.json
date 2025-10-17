@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "@notionhq/client": "^2.2.13",
-    "@raycast/api": "^1.63.0",
+    "@raycast/api": "latest",
     "cli-spinners": "^2.9.0",
     "cli-table": "^0.3.11",
     "commander": "^10.0.0",

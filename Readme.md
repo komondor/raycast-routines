@@ -1,5 +1,7 @@
 # Raycast routine
 
+- brew install fzf
+
 A collection of miscellanous raycast scripts:
 
 [repo](#repo) github repo to pdf  
