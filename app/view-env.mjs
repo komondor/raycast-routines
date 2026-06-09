@@ -18,4 +18,4 @@ import { $ } from "zx";
 
 $.verbose = true;
 
-await $`cat ~/.zprofile`;
+await $`cat ~/.env`;

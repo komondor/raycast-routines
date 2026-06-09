@@ -68,6 +68,18 @@ console.log("    space                 Start selection");
 console.log("    Enter                 Copy selection");
 console.log("    q                     Exit copy mode\n");
 
+console.log("🖱️  MOUSE MODE (requires configuration)");
+console.log("  To enable mouse selection, add to ~/.tmux.conf:");
+console.log("    set -g mouse on");
+console.log("  After enabling:");
+console.log(
+  "    Shift + drag            Select text (copies to system clipboard)"
+);
+console.log("    Click                   Select pane");
+console.log("    Drag pane border        Resize pane");
+console.log("    Double-click            Select word");
+console.log("    Triple-click            Select line\n");
+
 console.log("⚙️  MISC");
 console.log("  prefix + ?              List all keybindings");
 console.log("  prefix + :              Enter command mode");
@@ -76,3 +88,6 @@ console.log("  prefix + r              Reload config");
 
 console.log("\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
 console.log("\n💡 Tip: Use 'prefix + ?' to see all available shortcuts");
+console.log(
+  "💡 To enable mouse copy: Add 'set -g mouse on' to ~/.tmux.conf and reload"
+);
